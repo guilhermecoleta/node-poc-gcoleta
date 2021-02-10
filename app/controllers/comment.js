@@ -4,26 +4,9 @@ var mongoose = require('mongoose'),
     ObjectId = mongoose.Types.ObjectId
 
 exports.viewComment = function(req, res) {
-    Article.findOne({"comments._id": new ObjectId(req.params.id)}, {"comments.$": 1}, function(err, comment) {
-        if (err) {
-            res.status(500);
-            res.json({
-                type: false,
-                data: "Error occured: " + err
-            })
-        } else {
-            if (comment) {
-                res.json({
-                    type: true,
-                    data: new Comment(comment.comments[0])
-                })
-            } else {
-                res.json({
-                    type: false,
-                    data: "Comment: " + req.params.id + " not found"
-                })
-            }
-        }
+    res.json({
+        type: true,
+        data: "OK"
     })
 }
 
